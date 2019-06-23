@@ -5,7 +5,7 @@ class FlatList extends Component {
 
   render() {
     return (
-      <div>
+      <div className="flat-list">
         {this.props.list.map(flat => <Flat flat={flat} key={flat.id} />)}
       </div>
     )
