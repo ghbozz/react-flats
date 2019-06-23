@@ -36,8 +36,13 @@ body {
 }
 
 .marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px;
+  color: white;
   height: 20px;
   width: 20px;
   background-color: red;
-  border-radius: 50%;
+  border-radius: 4px;
 }
