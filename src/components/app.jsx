@@ -56,7 +56,7 @@ class App extends Component {
         <div className="map-container">
           <GoogleMapReact
             center={this.state.location}
-            bootstrapURLKeys={{ key: '...' }}
+            bootstrapURLKeys={{ key: ENV['GMAP'] }}
             zoom={13}>
             {this.state.flats.map(flat => (
               <Marker
