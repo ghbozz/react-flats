@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import FlatList from './flat_list.jsx';
 import Flat from './flat.jsx';
 import Marker from './marker.jsx';
+import gMap from '../../.env'
 
 class App extends Component {
   constructor(props) {
@@ -56,7 +57,7 @@ class App extends Component {
         <div className="map-container">
           <GoogleMapReact
             center={this.state.location}
-            bootstrapURLKeys={{ key: ENV['GMAP'] }}
+            bootstrapURLKeys={{ key: gMap }}
             zoom={13}>
             {this.state.flats.map(flat => (
               <Marker
