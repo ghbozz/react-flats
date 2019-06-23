@@ -11,8 +11,23 @@ class App extends Component {
 
     this.state = {
       flats: [],
-      defaultLocation: { lat: 48.866667, lng: 2.333333}
+      allFlats: [],
+      location: { lat: 48.866667, lng: 2.333333},
+      search: ''
     }
+  }
+
+  handleSearchInput = event => {
+    this.setState({
+      search: event.target.value,
+      flats: this.state.allFlats.filter(flat =>
+        flat.name.toLowerCase().includes(event.target.value.toLowerCase())
+      )
+    });
+  };
+
+  handleClick = flat => {
+    this.setState({ location: { lat: flat.lat, lng: flat.lng } })
   }
 
   componentDidMount() {
@@ -21,6 +36,7 @@ class App extends Component {
       .then(data =>
         this.setState({
           flats: data,
+          allFlats: data
         })
       );
   }
@@ -28,10 +44,18 @@ class App extends Component {
   render() {
     return (
       <div>
-        <FlatList list={this.state.flats} />
+      <div className="left-scene">
+        <input
+          className="form-control form-search"
+          type="text"
+          value={this.state.search}
+          onChange={this.handleSearchInput}
+        />
+        <FlatList list={this.state.flats} click={this.handleClick} />
+      </div>
         <div className="map-container">
           <GoogleMapReact
-            center={this.state.selectedFlat || this.state.defaultLocation}
+            center={this.state.location}
             bootstrapURLKeys={{ key: 'AIzaSyCksPM_FclDZGRwMa7gSdMs2q0MIYVceQw' }}
             zoom={13}>
             {this.state.flats.map(flat => (

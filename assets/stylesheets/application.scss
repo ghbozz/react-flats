@@ -22,9 +22,25 @@ body {
   top: 0 !important;
 }
 
+.left-scene {
+  flex: 0 0 60%;
+  position: sticky;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-search {
+  padding: 60px 60px 60px 120px;
+  border: none;
+  font-size: 2.6em;
+  box-shadow: none;
+  &:focus {
+    box-shadow: none;
+  }
+}
+
 .flat-list {
   padding-left: 10px;
-  width: 60%;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
